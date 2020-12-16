@@ -10,6 +10,10 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    var listOfQuestions = [QuestionAndAnswers]()
+    
+    var currentQuestionIndex = 0
+    
     let buttonA: AnswerButton = {
         let button = AnswerButton(frame: .zero, titleText: "A", answerIsCorrect: false)
         
@@ -56,6 +60,32 @@ class GameViewController: UIViewController {
         
     }
     
+    init(listOfQuestions: [QuestionAndAnswers]) {
+        self.listOfQuestions = listOfQuestions
+        super.init(nibName: nil, bundle: nil)
+        configureQuestions()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureQuestions() {
+        guard currentQuestionIndex <= listOfQuestions.count - 1 else { return }
+        guard listOfQuestions[currentQuestionIndex].answers.count >= 4 else { return }
+        
+        self.questionLabel.text = listOfQuestions[currentQuestionIndex].question
+        self.buttonA.label.text = listOfQuestions[currentQuestionIndex].answers[0].text
+        self.buttonA.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[0].isCorrect
+        self.buttonB.label.text = listOfQuestions[currentQuestionIndex].answers[1].text
+        self.buttonB.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[1].isCorrect
+        self.buttonC.label.text = listOfQuestions[currentQuestionIndex].answers[2].text
+        self.buttonC.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[2].isCorrect
+        self.buttonD.label.text = listOfQuestions[currentQuestionIndex].answers[3].text
+        self.buttonD.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[3].isCorrect
+        currentQuestionIndex += 1
+    }
+    
     func addSubviews() {
         self.view.addSubview(questionLabel)
         self.view.addSubview(buttonA)
@@ -90,7 +120,6 @@ class GameViewController: UIViewController {
         buttonD.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         buttonD.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         buttonD.heightAnchor.constraint(equalToConstant: 20),
-        
         
         ])
     }

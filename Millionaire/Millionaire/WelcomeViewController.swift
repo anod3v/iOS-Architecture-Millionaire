@@ -10,6 +10,11 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    var listOfQuestions: [QuestionAndAnswers] = {
+        let array = ModelFactory.getQuestionsAndAnswers()
+        return array
+    }()
+    
     let textField: UITextField = {
         let textField = UITextField()
         textField.frame = CGRect(x: 50, y: 70, width: 200, height: 30)
@@ -54,7 +59,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc func playButtonAction(sender: UIButton!) {
-        let gameViewController = GameViewController()
+        let gameViewController = GameViewController(listOfQuestions: self.listOfQuestions)
         gameViewController.modalPresentationStyle = .fullScreen
         self.show(gameViewController, sender: nil)
     }
