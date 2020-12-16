@@ -73,21 +73,21 @@ class GameViewController: UIViewController {
         
         buttonA.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 26),
         buttonA.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        buttonA.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: (-view.frame.width / 2) - 20),
+        buttonA.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -20),
         buttonA.heightAnchor.constraint(equalToConstant: 20),
         
-        buttonB.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 26),
-        buttonB.leadingAnchor.constraint(equalTo: buttonA.trailingAnchor, constant: 20),
+        buttonB.topAnchor.constraint(equalTo: buttonA.bottomAnchor, constant: 26),
+        buttonB.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         buttonB.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         buttonB.heightAnchor.constraint(equalToConstant: 20),
         
         buttonC.topAnchor.constraint(equalTo: buttonB.bottomAnchor, constant: 26),
         buttonC.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        buttonC.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: (-view.frame.width / 2) - 20),
+        buttonC.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         buttonC.heightAnchor.constraint(equalToConstant: 20),
         
-        buttonD.topAnchor.constraint(equalTo: buttonB.bottomAnchor, constant: 26),
-        buttonD.leadingAnchor.constraint(equalTo: buttonC.trailingAnchor, constant: 20),
+        buttonD.topAnchor.constraint(equalTo: buttonC.bottomAnchor, constant: 26),
+        buttonD.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         buttonD.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         buttonD.heightAnchor.constraint(equalToConstant: 20),
         
