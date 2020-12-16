@@ -54,7 +54,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc func playButtonAction(sender: UIButton!) {
-        print("playButtonAction tapped")
+        let gameViewController = GameViewController()
+        gameViewController.modalPresentationStyle = .fullScreen
+        self.show(gameViewController, sender: nil)
     }
     
     @objc func resultsButtonAction(sender: UIButton!) {
