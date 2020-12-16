@@ -15,6 +15,7 @@ class AnswerButton: UIButton {
     var label = UILabel()
     var isActive: Bool = false { didSet { changeActiveState() } }
     var answerIsCorrect: Bool
+    var didTapCorrectAnswer: ((Int) -> Void)?
     
     private let border = CAShapeLayer()
     
@@ -39,7 +40,7 @@ class AnswerButton: UIButton {
     
     @objc func checkIfCorrect() {
         if answerIsCorrect {
-            print("correct answer!!")
+            didTapCorrectAnswer?(1)
         } else {
             print("incorrect answer!!")
         }

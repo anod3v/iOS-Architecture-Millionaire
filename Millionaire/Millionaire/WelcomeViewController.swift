@@ -86,8 +86,6 @@ class WelcomeViewController: UIViewController {
             playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             playButton.heightAnchor.constraint(equalToConstant: 20),
             
-            
-            
         ])
     }
     

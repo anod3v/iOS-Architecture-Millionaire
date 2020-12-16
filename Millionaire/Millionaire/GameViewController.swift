@@ -57,7 +57,10 @@ class GameViewController: UIViewController {
         self.view.backgroundColor = .orange
         addSubviews()
         setupConstraints()
-        
+        self.buttonA.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
+        self.buttonB.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
+        self.buttonC.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
+        self.buttonD.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
     }
     
     init(listOfQuestions: [QuestionAndAnswers]) {
@@ -123,11 +126,6 @@ class GameViewController: UIViewController {
         
         ])
     }
-    
-    
-    
-    
-    
 }
 
 
