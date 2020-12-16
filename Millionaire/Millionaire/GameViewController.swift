@@ -57,6 +57,10 @@ class GameViewController: UIViewController {
         self.view.backgroundColor = .orange
         addSubviews()
         setupConstraints()
+        addTapObservers()
+    }
+    
+    func addTapObservers() {
         self.buttonA.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
         self.buttonB.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
         self.buttonC.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
