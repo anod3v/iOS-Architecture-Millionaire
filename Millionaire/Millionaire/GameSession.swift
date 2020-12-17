@@ -8,8 +8,16 @@
 
 import Foundation
 
-class GameSession {
-    var noOfQuestionsAnsweredSoFar: Int?
-    var noOfQuestionsTotal: Int?
-    var ResultPercentage: Int { noOfQuestionsAnsweredSoFar! / noOfQuestionsTotal! * 100 }
+class GameSession: GameSessionDelegate {
+    func addRecord(index: Int, count: Int) {
+        let score = index / count - 1
+        let record = Record(date: Date(), score: score)
+        debugPrint("\(record)")
+        Game.shared.addRecord(record)
+    }
+    
+//    internal init() {
+//        GameViewController.delegate = self
+//    }
+    
 }

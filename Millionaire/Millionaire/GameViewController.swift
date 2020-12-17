@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
     
     var currentQuestionIndex = 0
     
+    var delegate: GameSessionDelegate?
+    
     let buttonA: AnswerButton = {
         let button = AnswerButton(frame: .zero, titleText: "A", answerIsCorrect: false)
         
@@ -61,16 +63,29 @@ class GameViewController: UIViewController {
     }
     
     func addTapObservers() {
-        self.buttonA.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
-        self.buttonB.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
-        self.buttonC.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
-        self.buttonD.didTapCorrectAnswer = { [weak self] _ in self?.configureQuestions() }
+        self.buttonA.didTapCorrectAnswer = { [weak self] _ in
+            guard let self = self else { return }
+            self.configureQuestions() }
+        self.buttonB.didTapCorrectAnswer = { [weak self] _ in
+            guard let self = self else { return }
+            self.configureQuestions() }
+        self.buttonC.didTapCorrectAnswer = { [weak self] _ in
+            guard let self = self else { return }
+            self.configureQuestions() }
+        self.buttonD.didTapCorrectAnswer = { [weak self] _ in
+            guard let self = self else { return }
+            self.configureQuestions() }
+    }
+    
+    convenience init() {
+        self.init(listOfQuestions: [QuestionAndAnswers]())
     }
     
     init(listOfQuestions: [QuestionAndAnswers]) {
         self.listOfQuestions = listOfQuestions
         super.init(nibName: nil, bundle: nil)
         configureQuestions()
+//        Game.shared.gameSession = GameSession()
     }
     
     required init?(coder: NSCoder) {
@@ -91,6 +106,10 @@ class GameViewController: UIViewController {
         self.buttonD.label.text = listOfQuestions[currentQuestionIndex].answers[3].text
         self.buttonD.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[3].isCorrect
         currentQuestionIndex += 1
+//        delegate?.currentQuestionIndex = currentQuestionIndex
+//        delegate?.listOfQuestionsCount = listOfQuestions.count
+        delegate?.addRecord(index: currentQuestionIndex, count: listOfQuestions.count)
+        
     }
     
     func addSubviews() {
@@ -130,6 +149,12 @@ class GameViewController: UIViewController {
         
         ])
     }
+}
+
+protocol GameSessionDelegate: AnyObject {
+//    var currentQuestionIndex: Int { get set }
+//    var listOfQuestionsCount: Int { get set }
+    func addRecord(index: Int, count: Int)
 }
 
 

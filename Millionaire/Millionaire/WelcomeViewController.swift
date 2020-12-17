@@ -61,6 +61,7 @@ class WelcomeViewController: UIViewController {
     @objc func playButtonAction(sender: UIButton!) {
         let gameViewController = GameViewController(listOfQuestions: self.listOfQuestions)
         gameViewController.modalPresentationStyle = .fullScreen
+        gameViewController.delegate = GameSession()
         self.show(gameViewController, sender: nil)
     }
     

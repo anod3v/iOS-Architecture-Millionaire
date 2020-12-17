@@ -9,31 +9,31 @@
 import Foundation
 
 class Game {
-//    
-//    static let shared = Game()
-//    
-////    private let recordCaretaker = RecordsCaretaker()
-//    
-//    private var gameSession: GameSession?
-//    
-//    var records: [Record] {
-//        didSet {
-//            recordCaretaker.saveRecords(records: records)
-//        }
-//    }
-//    
-//    private init() {
-//        records  = recordCaretaker.loadRecords()
-//    }
-//    
-//    
-//    
-//    func addRecord(_ record: Record) {
-//        records.append(record)
-//    }
-//    
-//    func clearRecords() {
-//        records.removeAll()
-//    }
+    
+    static let shared = Game()
+    
+    private let recordCaretaker = RecordsCaretaker()
+    
+    var gameSession: GameSession?
+    
+    var records: [Record] {
+        didSet {
+            recordCaretaker.saveRecords(records: records)
+        }
+    }
+    
+    private init() {
+        records  = recordCaretaker.loadRecords()
+    }
+    
+    
+    
+    func addRecord(_ record: Record) {
+        records.append(record)
+    }
+    
+    func clearRecords() {
+        records.removeAll()
+    }
     
 }
