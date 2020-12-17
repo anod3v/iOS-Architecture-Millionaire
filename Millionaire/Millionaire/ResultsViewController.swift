@@ -42,7 +42,8 @@ extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ResultsTableViewCell {
-            let record = Game.shared.records[indexPath.row]
+            let reversedIndex = Game.shared.records.count - indexPath.row - 1
+            let record = Game.shared.records[reversedIndex]
             cell.scoreLabel.text = "\(record.score)"
             cell.dateLabel.text = record.date.description
             
