@@ -15,7 +15,7 @@ class ResultsTableViewCell: UITableViewCell {
         //        label.font = Constants.Fonts.regularOfSize25
         label.numberOfLines = 1
         label.textColor = .white
-        label.backgroundColor = .brown
+        label.backgroundColor = .gray
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -26,7 +26,7 @@ class ResultsTableViewCell: UITableViewCell {
         //        label.font = Constants.Fonts.regularOfSize25
         label.numberOfLines = 1
         label.textColor = .white
-        label.backgroundColor = .blue
+        label.backgroundColor = .darkGray
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

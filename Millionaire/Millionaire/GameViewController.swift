@@ -46,7 +46,7 @@ class GameViewController: UIViewController {
     
     var questionLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .cyan
+        label.backgroundColor = .black
         label.numberOfLines = 0
         label.textColor = .white
         

@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController {
     
     let playButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .green
+        button.backgroundColor = .gray
         button.setTitle("Играть", for: .normal)
         button.addTarget(self, action: #selector(playButtonAction), for: .touchUpInside)
         
@@ -36,7 +36,7 @@ class WelcomeViewController: UIViewController {
     
     let resultsButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .green
+        button.backgroundColor = .gray
         button.setTitle("Результаты", for: .normal)
         button.addTarget(self, action: #selector(resultsButtonAction), for: .touchUpInside)
         
@@ -67,7 +67,7 @@ class WelcomeViewController: UIViewController {
     
     @objc func resultsButtonAction(sender: UIButton!) {
         let resultsViewController = ResultsViewController()
-        resultsViewController.modalPresentationStyle = .fullScreen
+//        resultsViewController.modalPresentationStyle = .fullScreen
         self.show(resultsViewController, sender: nil)
     }
     
@@ -82,12 +82,12 @@ class WelcomeViewController: UIViewController {
             resultsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 3),
             resultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             resultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            resultsButton.heightAnchor.constraint(equalToConstant: 20),
+            resultsButton.heightAnchor.constraint(equalToConstant: 40),
             
             playButton.topAnchor.constraint(equalTo: resultsButton.bottomAnchor, constant: 26),
             playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            playButton.heightAnchor.constraint(equalToConstant: 20),
+            playButton.heightAnchor.constraint(equalToConstant: 40),
             
         ])
     }
