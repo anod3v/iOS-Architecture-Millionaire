@@ -60,6 +60,7 @@ class GameViewController: UIViewController {
         addSubviews()
         setupConstraints()
         addTapObservers()
+        configureQuestions()
     }
     
     func addTapObservers() {
@@ -84,8 +85,6 @@ class GameViewController: UIViewController {
     init(listOfQuestions: [QuestionAndAnswers]) {
         self.listOfQuestions = listOfQuestions
         super.init(nibName: nil, bundle: nil)
-        configureQuestions()
-//        Game.shared.gameSession = GameSession()
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +92,7 @@ class GameViewController: UIViewController {
     }
     
     func configureQuestions() {
+        debugPrint("currentQuestionIndex:", currentQuestionIndex)
         guard currentQuestionIndex <= listOfQuestions.count - 1 else { return }
         guard listOfQuestions[currentQuestionIndex].answers.count >= 4 else { return }
         
@@ -105,11 +105,8 @@ class GameViewController: UIViewController {
         self.buttonC.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[2].isCorrect
         self.buttonD.label.text = listOfQuestions[currentQuestionIndex].answers[3].text
         self.buttonD.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[3].isCorrect
-        currentQuestionIndex += 1
-//        delegate?.currentQuestionIndex = currentQuestionIndex
-//        delegate?.listOfQuestionsCount = listOfQuestions.count
         delegate?.addRecord(index: currentQuestionIndex, count: listOfQuestions.count)
-        
+        currentQuestionIndex += 1
     }
     
     func addSubviews() {
@@ -152,8 +149,6 @@ class GameViewController: UIViewController {
 }
 
 protocol GameSessionDelegate: AnyObject {
-//    var currentQuestionIndex: Int { get set }
-//    var listOfQuestionsCount: Int { get set }
     func addRecord(index: Int, count: Int)
 }
 
