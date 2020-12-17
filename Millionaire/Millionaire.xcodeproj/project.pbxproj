@@ -20,6 +20,7 @@
 		55EB892D258B441C00EBA50E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB892C258B441C00EBA50E /* Game.swift */; };
 		55EB892F258B47E400EBA50E /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB892E258B47E400EBA50E /* GameSession.swift */; };
 		55EB8931258B51F400EBA50E /* RecordsCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */; };
+		55EB8933258B76F700EBA50E /* UIViewContraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		55EB892C258B441C00EBA50E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		55EB892E258B47E400EBA50E /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCareTaker.swift; sourceTree = "<group>"; };
+		55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewContraintsExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				557C728A25891C32001D1D88 /* AppDelegate.swift */,
 				557C728C25891C32001D1D88 /* SceneDelegate.swift */,
 				557C728E25891C32001D1D88 /* ResultsViewController.swift */,
+				55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */,
 				557C72A2258A455B001D1D88 /* ResultsTableViewCell.swift */,
 				557C72A4258A517F001D1D88 /* WelcomeViewController.swift */,
 				557C72AA258A6CEC001D1D88 /* GameViewController.swift */,
@@ -167,6 +170,7 @@
 				557C728B25891C32001D1D88 /* AppDelegate.swift in Sources */,
 				557C728D25891C32001D1D88 /* SceneDelegate.swift in Sources */,
 				557C72A5258A517F001D1D88 /* WelcomeViewController.swift in Sources */,
+				55EB8933258B76F700EBA50E /* UIViewContraintsExtension.swift in Sources */,
 				557C72A1258A428A001D1D88 /* Model.swift in Sources */,
 				557C72A3258A455B001D1D88 /* ResultsTableViewCell.swift in Sources */,
 			);

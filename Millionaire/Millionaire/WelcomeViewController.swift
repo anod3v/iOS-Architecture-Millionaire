@@ -66,7 +66,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc func resultsButtonAction(sender: UIButton!) {
-        print("resultsButtonAction tapped")
+        let resultsViewController = ResultsViewController()
+        resultsViewController.modalPresentationStyle = .fullScreen
+        self.show(resultsViewController, sender: nil)
     }
     
     func setupConstraints() {

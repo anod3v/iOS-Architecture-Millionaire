@@ -10,21 +10,23 @@ import UIKit
 
 class ResultsTableViewCell: UITableViewCell {
     
-    var userNameLabel: UILabel = {
+    var scoreLabel: UILabel = {
         let label = UILabel()
         //        label.font = Constants.Fonts.regularOfSize25
         label.numberOfLines = 1
         label.textColor = .white
+        label.backgroundColor = .brown
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var resultLabel: UILabel = {
+    var dateLabel: UILabel = {
         let label = UILabel()
         //        label.font = Constants.Fonts.regularOfSize25
         label.numberOfLines = 1
         label.textColor = .white
+        label.backgroundColor = .blue
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -43,20 +45,22 @@ class ResultsTableViewCell: UITableViewCell {
     }
     
     func addViews() {
-        self.addSubview(userNameLabel)
-        self.addSubview(resultLabel)
+        self.addSubview(scoreLabel)
+        self.addSubview(dateLabel)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            userNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            userNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            userNameLabel.heightAnchor.constraint(equalToConstant: 50),
+            scoreLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scoreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            scoreLabel.widthAnchor.constraint(equalToConstant: 200),
+            scoreLabel.heightAnchor.constraint(equalToConstant: 50),
 
-            resultLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            resultLabel.leadingAnchor.constraint(equalTo: userNameLabel.trailingAnchor,constant: 20),
-            resultLabel.heightAnchor.constraint(equalToConstant: 50),
+            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: scoreLabel.trailingAnchor,constant: 20),
+            dateLabel.widthAnchor.constraint(equalToConstant: 200),
+            dateLabel.heightAnchor.constraint(equalToConstant: 50),
    
         ])
     }

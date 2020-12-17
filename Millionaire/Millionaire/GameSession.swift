@@ -10,8 +10,8 @@ import Foundation
 
 class GameSession: GameSessionDelegate {
     func addRecord(index: Int, count: Int) {
-        let float = Float(index) / Float(count)
-        let score = float * 100
+        let floatScore = Float(index) / Float(count)
+        let score = floatScore * 100
         let record = Record(date: Date(), score: Int(score))
         debugPrint("\(record), index:", index, "count", count)
         Game.shared.addRecord(record)
