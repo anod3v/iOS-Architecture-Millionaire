@@ -53,6 +53,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55238F8F258B866600C2EC22 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				55EB892C258B441C00EBA50E /* Game.swift */,
+				55EB892E258B47E400EBA50E /* GameSession.swift */,
+				55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		55238F90258B867A00C2EC22 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				557C72A0258A428A001D1D88 /* Model.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		55238F91258B869C00C2EC22 /* GameVC */ = {
+			isa = PBXGroup;
+			children = (
+				557C72AA258A6CEC001D1D88 /* GameViewController.swift */,
+			);
+			path = GameVC;
+			sourceTree = "<group>";
+		};
+		55238F92258B86A800C2EC22 /* WelcomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				557C72A4258A517F001D1D88 /* WelcomeViewController.swift */,
+			);
+			path = WelcomeVC;
+			sourceTree = "<group>";
+		};
+		55238F93258B86B500C2EC22 /* ResultsVC */ = {
+			isa = PBXGroup;
+			children = (
+				557C728E25891C32001D1D88 /* ResultsViewController.swift */,
+				557C72A2258A455B001D1D88 /* ResultsTableViewCell.swift */,
+			);
+			path = ResultsVC;
+			sourceTree = "<group>";
+		};
+		55238F94258B86C300C2EC22 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		557C727E25891C32001D1D88 = {
 			isa = PBXGroup;
 			children = (
@@ -74,16 +125,13 @@
 			children = (
 				557C728A25891C32001D1D88 /* AppDelegate.swift */,
 				557C728C25891C32001D1D88 /* SceneDelegate.swift */,
-				557C728E25891C32001D1D88 /* ResultsViewController.swift */,
-				55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */,
-				557C72A2258A455B001D1D88 /* ResultsTableViewCell.swift */,
-				557C72A4258A517F001D1D88 /* WelcomeViewController.swift */,
-				557C72AA258A6CEC001D1D88 /* GameViewController.swift */,
-				557C72A0258A428A001D1D88 /* Model.swift */,
+				55238F94258B86C300C2EC22 /* Extensions */,
+				55238F93258B86B500C2EC22 /* ResultsVC */,
+				55238F92258B86A800C2EC22 /* WelcomeVC */,
+				55238F91258B869C00C2EC22 /* GameVC */,
+				55238F90258B867A00C2EC22 /* Entities */,
 				557C72AC258A8CFA001D1D88 /* AnswerButton.swift */,
-				55EB892C258B441C00EBA50E /* Game.swift */,
-				55EB892E258B47E400EBA50E /* GameSession.swift */,
-				55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */,
+				55238F8F258B866600C2EC22 /* Helpers */,
 				557C729325891C36001D1D88 /* Assets.xcassets */,
 				557C729525891C36001D1D88 /* LaunchScreen.storyboard */,
 				557C729825891C36001D1D88 /* Info.plist */,
