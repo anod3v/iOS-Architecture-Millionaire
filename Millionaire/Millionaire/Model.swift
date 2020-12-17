@@ -8,14 +8,9 @@
 
 import Foundation
 
-struct Record {
-    let userName: String
-    let result: Int
-    
-    init(userName: String, result: Int) {
-        self.userName = userName
-        self.result = result
-    }
+struct Record: Codable {
+    let date: Date
+    let score: Int
 }
 
 struct QuestionAndAnswers {
@@ -58,11 +53,18 @@ class ModelFactory {
             Answer(text: "C: А.Н. Радищев", isCorrect: true),
             Answer(text: "D: Н.М. Карамзин", isCorrect: false)
         ])
+        let questionAndAnswers4 = QuestionAndAnswers(question: "Что такое шерл?", answers: [
+            Answer(text: "A: Розовый топаз", isCorrect: false),
+            Answer(text: "B: Жёлтый бриллиант", isCorrect: false),
+            Answer(text: "C: Оранжевый сапфир", isCorrect: false),
+            Answer(text: "D: Чёрный турмалин", isCorrect: true)
+        ])
         
         var array = [
             questionAndAnswers1,
             questionAndAnswers2,
-            questionAndAnswers3
+            questionAndAnswers3,
+            questionAndAnswers4
         ]
         return array
     }
