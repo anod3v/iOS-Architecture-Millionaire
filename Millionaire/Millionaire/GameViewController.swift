@@ -46,10 +46,13 @@ class GameViewController: UIViewController {
     
     var questionLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .black
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
+        label.textAlignment = .center
         label.textColor = .white
-        
+        label.backgroundColor = .black
+
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -64,16 +67,16 @@ class GameViewController: UIViewController {
     }
     
     func addTapObservers() {
-        self.buttonA.didTapCorrectAnswer = { [weak self] _ in
+        self.buttonA.didTapAnswer = { [weak self] _ in
             guard let self = self else { return }
             self.configureQuestions() }
-        self.buttonB.didTapCorrectAnswer = { [weak self] _ in
+        self.buttonB.didTapAnswer = { [weak self] _ in
             guard let self = self else { return }
             self.configureQuestions() }
-        self.buttonC.didTapCorrectAnswer = { [weak self] _ in
+        self.buttonC.didTapAnswer = { [weak self] _ in
             guard let self = self else { return }
             self.configureQuestions() }
-        self.buttonD.didTapCorrectAnswer = { [weak self] _ in
+        self.buttonD.didTapAnswer = { [weak self] _ in
             guard let self = self else { return }
             self.configureQuestions() }
     }
