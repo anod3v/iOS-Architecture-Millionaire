@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    var listOfQuestions: [QuestionAndAnswers] { getQuestionsStrategy.getQuestions() }
+    var listOfQuestions = [QuestionAndAnswers]()
     
     var currentQuestionIndex = 0
     
@@ -117,6 +117,8 @@ class GameViewController: UIViewController {
     }
     
     func configureQuestions() {
+        listOfQuestions = getQuestionsStrategy.getQuestions()
+        
         debugPrint("currentQuestionIndex:", currentQuestionIndex)
         guard currentQuestionIndex <= listOfQuestions.count - 1 else { return }
         guard listOfQuestions[currentQuestionIndex].answers.count >= 4 else { return }
