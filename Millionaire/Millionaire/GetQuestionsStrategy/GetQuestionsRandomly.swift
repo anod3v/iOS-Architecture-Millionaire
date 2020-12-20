@@ -10,10 +10,9 @@ import Foundation
 
 class GetQuestionsRandomly: GetQuestionsStrategy {
     func getQuestions() -> [QuestionAndAnswers] {
-        var listOfQuestions: [QuestionAndAnswers] = {
-            let array = ModelFactory.getQuestionsAndAnswers()
-            return array.shuffled()
-        }()
-        return listOfQuestions
+        
+        let array = ModelFactory.getQuestionsAndAnswers()
+        return array.shuffled()
+        
     }
 }

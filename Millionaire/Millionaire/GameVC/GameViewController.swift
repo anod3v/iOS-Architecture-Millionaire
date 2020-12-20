@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    var listOfQuestions = [QuestionAndAnswers]()
+    var listOfQuestions: [QuestionAndAnswers] { getQuestionsStrategy.getQuestions() }
     
     var currentQuestionIndex = 0
     
@@ -59,6 +59,17 @@ class GameViewController: UIViewController {
         return label
     }()
     
+    private var getQuestionsStrategy: GetQuestionsStrategy {
+        switch Game.shared.orderedOrRandomSetting {
+        case .random:
+            return GetQuestionsRandomly()
+        case .ordered:
+            return GetQuestionsOrdered()
+        case .none:
+            return GetQuestionsRandomly()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
@@ -97,12 +108,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    convenience init() {
-        self.init(listOfQuestions: [QuestionAndAnswers]())
-    }
-    
-    init(listOfQuestions: [QuestionAndAnswers]) {
-        self.listOfQuestions = listOfQuestions
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     

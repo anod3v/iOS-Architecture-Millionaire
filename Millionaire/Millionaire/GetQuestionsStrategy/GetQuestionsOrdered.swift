@@ -10,10 +10,9 @@ import Foundation
 
 class GetQuestionsOrdered: GetQuestionsStrategy {
     func getQuestions() -> [QuestionAndAnswers] {
-        var listOfQuestions: [QuestionAndAnswers] = {
-            let array = ModelFactory.getQuestionsAndAnswers()
-            return array
-        }()
-        return listOfQuestions
+        
+        let array = ModelFactory.getQuestionsAndAnswers()
+        return array
+        
     }
 }
