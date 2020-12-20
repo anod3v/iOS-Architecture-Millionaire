@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     
     var delegate: GameSessionDelegate?
     
-    var orderOrRandomSetting = OrderedOrRandomSetting.random
+//    var orderOrRandomSetting = OrderedOrRandomSetting.random
     
     let buttonA: AnswerButton = {
         let button = AnswerButton(frame: .zero, titleText: "A", answerIsCorrect: false)
@@ -65,8 +65,6 @@ class GameViewController: UIViewController {
             return GetQuestionsRandomly()
         case .ordered:
             return GetQuestionsOrdered()
-        case .none:
-            return GetQuestionsRandomly()
         }
     }
     
@@ -76,6 +74,7 @@ class GameViewController: UIViewController {
         addSubviews()
         setupConstraints()
         addTapObservers()
+        listOfQuestions = getQuestionsStrategy.getQuestions()
         configureQuestions()
     }
     
@@ -117,9 +116,8 @@ class GameViewController: UIViewController {
     }
     
     func configureQuestions() {
-        listOfQuestions = getQuestionsStrategy.getQuestions()
         
-        debugPrint("currentQuestionIndex:", currentQuestionIndex)
+//        debugPrint("currentQuestionIndex:", currentQuestionIndex)
         guard currentQuestionIndex <= listOfQuestions.count - 1 else { return }
         guard listOfQuestions[currentQuestionIndex].answers.count >= 4 else { return }
         

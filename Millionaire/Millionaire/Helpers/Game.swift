@@ -14,7 +14,8 @@ class Game {
     
     private let recordCaretaker = RecordsCaretaker()
     
-    var orderedOrRandomSetting: OrderedOrRandomSetting?
+    var orderedOrRandomSetting = OrderedOrRandomSetting.random
+    { didSet { print("orderedOrRandomSetting SINGLETONE:", orderedOrRandomSetting) }}
     
     var gameSession: GameSession?
     

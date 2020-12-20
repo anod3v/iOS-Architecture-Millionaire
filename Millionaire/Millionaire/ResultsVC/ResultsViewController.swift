@@ -30,8 +30,8 @@ class ResultsViewController: UIViewController {
         tableView.delegate = self
         tableView.register(ResultsTableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.pin(to: view)
-        print("Game.shared.records",Game.shared.records)
-        print("Game.shared.records.count",Game.shared.records.count)
+//        print("Game.shared.records",Game.shared.records)
+//        print("Game.shared.records.count",Game.shared.records.count)
     }
 }
 

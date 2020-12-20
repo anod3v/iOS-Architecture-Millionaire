@@ -13,7 +13,7 @@ class GameSession: GameSessionDelegate {
         let floatScore = Float(index) / Float(count)
         let score = floatScore * 100
         let record = Record(date: Date(), score: Int(score))
-        debugPrint("\(record), index:", index, "count", count)
+//        debugPrint("\(record), index:", index, "count", count)
         Game.shared.addRecord(record)
     }
     
