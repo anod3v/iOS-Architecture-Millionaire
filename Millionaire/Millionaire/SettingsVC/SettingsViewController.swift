@@ -13,6 +13,15 @@ class SettingsViewController: UIViewController {
     let segmentedControl: TTSegmentedControl = {
         let control = TTSegmentedControl()
         control.allowChangeThumbWidth = false
+        control.itemTitles = ["Случайно","По порядку"]
+        control.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(0.3))
+        control.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(0.01))
+        control.useGradient = false
+        control.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
+        control.useShadow = false
+        control.cornerRadius = 5
+        control.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
+        control.allowChangeThumbWidth = false
         //        control.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
         control.didSelectItemWith = { (index, title) -> () in
             print("Selected item \(index)")
@@ -40,7 +49,7 @@ class SettingsViewController: UIViewController {
 //        gameViewController.delegate = GameSession()
 //        self.show(gameViewController, sender: nil)
 //    }
-//    
+//
 //    @objc func resultsButtonAction(sender: UIButton!) {
 //        let resultsViewController = ResultsViewController()
 //        //        resultsViewController.modalPresentationStyle = .fullScreen
