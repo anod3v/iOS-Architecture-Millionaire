@@ -27,9 +27,6 @@ class SettingsViewController: UIViewController {
         return control
     }()
     
-    private var selectedOrder = OrderedOrRandomSetting.random { didSet { print("selectedOrder:", selectedOrder)} }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .yellow
@@ -46,11 +43,11 @@ class SettingsViewController: UIViewController {
         segmentedControl.didSelectItemWith = { (index, title) -> () in
             switch index {
             case 0:
-                self.selectedOrder = .random
+                Game.shared.orderedOrRandomSetting = .random
             case 1:
-                self.selectedOrder = .ordered
+                Game.shared.orderedOrRandomSetting = .ordered
             default:
-                self.selectedOrder = .random
+                Game.shared.orderedOrRandomSetting = .random
             }
         }
     }
