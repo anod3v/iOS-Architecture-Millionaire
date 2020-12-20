@@ -35,6 +35,16 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
+    let settingsButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .gray
+        button.setTitle("Настройки", for: .normal)
+        button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +56,7 @@ class WelcomeViewController: UIViewController {
     func addSubviews() {
         self.view.addSubview(playButton)
         self.view.addSubview(resultsButton)
-//        self.view.addSubview(textField)
+        self.view.addSubview(settingsButton)
     }
     
     @objc func playButtonAction(sender: UIButton!) {
@@ -62,6 +72,12 @@ class WelcomeViewController: UIViewController {
         self.show(resultsViewController, sender: nil)
     }
     
+    @objc func settingsButtonAction(sender: UIButton!) {
+        let settingsViewController = SettingsViewController()
+        settingsViewController.modalPresentationStyle = .fullScreen
+        self.show(settingsViewController, sender: nil)
+    }
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
@@ -74,6 +90,11 @@ class WelcomeViewController: UIViewController {
             playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             playButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            settingsButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 26),
+            settingsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            settingsButton.heightAnchor.constraint(equalToConstant: 40),
             
         ])
     }
