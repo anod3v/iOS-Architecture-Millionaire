@@ -22,14 +22,12 @@ class SettingsViewController: UIViewController {
         control.cornerRadius = 5
         control.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
         control.allowChangeThumbWidth = false
-        //        control.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
-        control.didSelectItemWith = { (index, title) -> () in
-            print("Selected item \(index)")
-        }
         
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
+    
+    private var selectedOrder = OrderedOrRandomSetting.random { didSet { print("selectedOrder:", selectedOrder)} }
     
     
     override func viewDidLoad() {
@@ -37,24 +35,25 @@ class SettingsViewController: UIViewController {
         self.view.backgroundColor = .yellow
         addSubviews()
         setupConstraints()
+        addGestureRecognizer()
     }
     
     func addSubviews() {
         self.view.addSubview(segmentedControl)
     }
     
-//    @objc func playButtonAction(sender: UIButton!) {
-//        let gameViewController = GameViewController(listOfQuestions: self.listOfQuestions)
-//        gameViewController.modalPresentationStyle = .fullScreen
-//        gameViewController.delegate = GameSession()
-//        self.show(gameViewController, sender: nil)
-//    }
-//
-//    @objc func resultsButtonAction(sender: UIButton!) {
-//        let resultsViewController = ResultsViewController()
-//        //        resultsViewController.modalPresentationStyle = .fullScreen
-//        self.show(resultsViewController, sender: nil)
-//    }
+    func addGestureRecognizer() {
+        segmentedControl.didSelectItemWith = { (index, title) -> () in
+            switch index {
+            case 0:
+                self.selectedOrder = .random
+            case 1:
+                self.selectedOrder = .ordered
+            default:
+                self.selectedOrder = .random
+            }
+        }
+    }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([

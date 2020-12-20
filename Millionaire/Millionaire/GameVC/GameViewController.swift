@@ -16,6 +16,8 @@ class GameViewController: UIViewController {
     
     var delegate: GameSessionDelegate?
     
+    var orderOrRandomSetting = OrderedOrRandomSetting.random
+    
     let buttonA: AnswerButton = {
         let button = AnswerButton(frame: .zero, titleText: "A", answerIsCorrect: false)
         

@@ -14,6 +14,8 @@ class Game {
     
     private let recordCaretaker = RecordsCaretaker()
     
+    var orderedOrRandomSetting: OrderedOrRandomSetting?
+    
     var gameSession: GameSession?
     
     var records: [Record] {

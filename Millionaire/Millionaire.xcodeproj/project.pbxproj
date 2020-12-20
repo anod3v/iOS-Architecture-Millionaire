@@ -23,6 +23,10 @@
 		55EB892F258B47E400EBA50E /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB892E258B47E400EBA50E /* GameSession.swift */; };
 		55EB8931258B51F400EBA50E /* RecordsCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */; };
 		55EB8933258B76F700EBA50E /* UIViewContraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */; };
+		55F1FD66258FAA3C0040A2F9 /* GetQuestionsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1FD65258FAA3C0040A2F9 /* GetQuestionsStrategy.swift */; };
+		55F1FD69258FADC80040A2F9 /* GetQuestionsRandomly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1FD68258FADC80040A2F9 /* GetQuestionsRandomly.swift */; };
+		55F1FD6B258FB0F70040A2F9 /* GetQuestionsOrdered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1FD6A258FB0F70040A2F9 /* GetQuestionsOrdered.swift */; };
+		55F1FD6D258FB22B0040A2F9 /* OrderedOrRandomSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F1FD6C258FB22B0040A2F9 /* OrderedOrRandomSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		55EB892E258B47E400EBA50E /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		55EB8930258B51F400EBA50E /* RecordsCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCareTaker.swift; sourceTree = "<group>"; };
 		55EB8932258B76F700EBA50E /* UIViewContraintsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewContraintsExtension.swift; sourceTree = "<group>"; };
+		55F1FD65258FAA3C0040A2F9 /* GetQuestionsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsStrategy.swift; sourceTree = "<group>"; };
+		55F1FD68258FADC80040A2F9 /* GetQuestionsRandomly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsRandomly.swift; sourceTree = "<group>"; };
+		55F1FD6A258FB0F70040A2F9 /* GetQuestionsOrdered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsOrdered.swift; sourceTree = "<group>"; };
+		55F1FD6C258FB22B0040A2F9 /* OrderedOrRandomSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedOrRandomSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				557C72A0258A428A001D1D88 /* Model.swift */,
+				55F1FD6C258FB22B0040A2F9 /* OrderedOrRandomSetting.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 				55238F92258B86A800C2EC22 /* WelcomeVC */,
 				55238F91258B869C00C2EC22 /* GameVC */,
 				550C084F258F7DA500BBADBF /* SettingsVC */,
+				55F1FD67258FAD670040A2F9 /* GetQuestionsStrategy */,
 				55238F90258B867A00C2EC22 /* Entities */,
 				557C72AC258A8CFA001D1D88 /* AnswerButton.swift */,
 				55238F8F258B866600C2EC22 /* Helpers */,
@@ -151,6 +161,16 @@
 				557C729825891C36001D1D88 /* Info.plist */,
 			);
 			path = Millionaire;
+			sourceTree = "<group>";
+		};
+		55F1FD67258FAD670040A2F9 /* GetQuestionsStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				55F1FD65258FAA3C0040A2F9 /* GetQuestionsStrategy.swift */,
+				55F1FD68258FADC80040A2F9 /* GetQuestionsRandomly.swift */,
+				55F1FD6A258FB0F70040A2F9 /* GetQuestionsOrdered.swift */,
+			);
+			path = GetQuestionsStrategy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,11 +247,15 @@
 				557C72AB258A6CEC001D1D88 /* GameViewController.swift in Sources */,
 				55EB8931258B51F400EBA50E /* RecordsCareTaker.swift in Sources */,
 				55EB892D258B441C00EBA50E /* Game.swift in Sources */,
+				55F1FD6D258FB22B0040A2F9 /* OrderedOrRandomSetting.swift in Sources */,
 				55EB892F258B47E400EBA50E /* GameSession.swift in Sources */,
 				557C72AD258A8CFA001D1D88 /* AnswerButton.swift in Sources */,
+				55F1FD69258FADC80040A2F9 /* GetQuestionsRandomly.swift in Sources */,
 				557C728F25891C32001D1D88 /* ResultsViewController.swift in Sources */,
+				55F1FD66258FAA3C0040A2F9 /* GetQuestionsStrategy.swift in Sources */,
 				557C728B25891C32001D1D88 /* AppDelegate.swift in Sources */,
 				557C728D25891C32001D1D88 /* SceneDelegate.swift in Sources */,
+				55F1FD6B258FB0F70040A2F9 /* GetQuestionsOrdered.swift in Sources */,
 				557C72A5258A517F001D1D88 /* WelcomeViewController.swift in Sources */,
 				55EB8933258B76F700EBA50E /* UIViewContraintsExtension.swift in Sources */,
 				550C084E258F7D9400BBADBF /* SettingsViewController.swift in Sources */,
