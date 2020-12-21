@@ -16,7 +16,26 @@
 
 import UIKit
 
+class WhichIsCorrect {
+    var optionA = false { willSet { resetAll() } }
+    var optionB = false { willSet { resetAll() } }
+    var optionC = false { willSet { resetAll() } }
+    var optionD = false { willSet { resetAll() } }
+    
+    lazy var allOptions = [optionA, optionB, optionC, optionB]
+    
+    func resetAll() {
+        for index in allOptions.indices {
+            allOptions[index] = false
+        }
+    }
+}
+
 class AddQuestionViewController: UIViewController {
+    
+    var questionAndAnswers: QuestionAndAnswers?
+    
+    var whichIsCorrect = WhichIsCorrect()
     
     let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -105,6 +124,23 @@ class AddQuestionViewController: UIViewController {
         return field
     }()
     
+    let segmentedControl: TTSegmentedControl = {
+        let control = TTSegmentedControl()
+        control.allowChangeThumbWidth = false
+        control.itemTitles = ["A","B", "C", "D"]
+        control.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(0.3))
+        control.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(0.01))
+        control.useGradient = false
+        control.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
+        control.useShadow = false
+        control.cornerRadius = 5
+        control.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
+        control.selectItemAt(index: 0)
+        
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+    }()
+    
     let addButton: UIButton = {
         let button = UIButton()
         let labelText  = "Добавить"
@@ -164,42 +200,42 @@ class AddQuestionViewController: UIViewController {
             questionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             questionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 40),
+            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 20),
             questionTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             questionTextField.heightAnchor.constraint(equalToConstant: 40),
             questionTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             questionTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answersLabel.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 40),
+            answersLabel.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 20),
             answersLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answersLabel.heightAnchor.constraint(equalToConstant: 40),
             answersLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             answersLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answerTextFieldA.topAnchor.constraint(equalTo: answersLabel.bottomAnchor, constant: 40),
+            answerTextFieldA.topAnchor.constraint(equalTo: answersLabel.bottomAnchor, constant: 20),
             answerTextFieldA.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answerTextFieldA.heightAnchor.constraint(equalToConstant: 40),
             answerTextFieldA.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             answerTextFieldA.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answerTextFieldB.topAnchor.constraint(equalTo: answerTextFieldA.bottomAnchor, constant: 40),
+            answerTextFieldB.topAnchor.constraint(equalTo: answerTextFieldA.bottomAnchor, constant: 20),
             answerTextFieldB.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answerTextFieldB.heightAnchor.constraint(equalToConstant: 40),
             answerTextFieldB.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             answerTextFieldB.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answerTextFieldC.topAnchor.constraint(equalTo: answerTextFieldB.bottomAnchor, constant: 40),
+            answerTextFieldC.topAnchor.constraint(equalTo: answerTextFieldB.bottomAnchor, constant: 20),
             answerTextFieldC.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answerTextFieldC.heightAnchor.constraint(equalToConstant: 40),
             answerTextFieldC.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             answerTextFieldC.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answerTextFieldD.topAnchor.constraint(equalTo: answerTextFieldC.bottomAnchor, constant: 40),
+            answerTextFieldD.topAnchor.constraint(equalTo: answerTextFieldC.bottomAnchor, constant: 20),
             answerTextFieldD.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answerTextFieldD.heightAnchor.constraint(equalToConstant: 40),
             answerTextFieldD.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             answerTextFieldD.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-
+            
             addButton.topAnchor.constraint(equalTo: answerTextFieldD.bottomAnchor, constant: 40),
             addButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             addButton.heightAnchor.constraint(equalToConstant: 40),
@@ -211,25 +247,46 @@ class AddQuestionViewController: UIViewController {
         ])
     }
     
+    func configureControl() {
+        
+        segmentedControl.didSelectItemWith = { [weak self] (index, title) -> () in
+            guard let self = self else { return }
+            
+            switch index {
+            case 0:
+                return self.whichIsCorrect.optionA = true
+            case 1:
+                return self.whichIsCorrect.optionA = true
+            case 2:
+                return self.whichIsCorrect.optionA = true
+            case 3:
+                return self.whichIsCorrect.optionA = true
+            default:
+                return self.whichIsCorrect.optionA = true
+            }
+        }
+    }
+    
+    
     
     @objc func loginButtonPressed(_ sender: Any) {
-                // Получаем текст логина
-                let login = questionTextField.text!
-        //         Получаем текст-пароль
-                let password = answerTextFieldA.text!
+        //        let login = questionTextField.text!
+        //        let password = answerTextFieldA.text!
+        //        if login == "admin" && password == "123456" {
+        //        } else {
+        //            showLoginError()
+        //        }
         
-//                let mainTabBarViewController = MainTabBarViewController()
+        questionAndAnswers = QuestionAndAnswers(question: questionTextField.text ?? "", // TODO: to add a check for the textfields
+            answers: [
+                Answer(text: "A:" + (answerTextFieldA.text ?? ""), isCorrect: whichIsCorrect.optionA),
+                Answer(text: "B:" + (answerTextFieldB.text ?? ""), isCorrect: whichIsCorrect.optionB),
+                Answer(text: "C:" + (answerTextFieldC.text ?? ""), isCorrect: whichIsCorrect.optionC),
+                Answer(text: "D:" + (answerTextFieldD.text ?? ""), isCorrect: whichIsCorrect.optionD)
+        ])
         
-                // Проверяем, верны ли они
-                if login == "admin" && password == "123456" {
-                    //            print("successfully authorized")
-//                    mainTabBarViewController.modalPresentationStyle = .fullScreen
-//                    self.present(mainTabBarViewController, animated: true, completion: nil)
-//                    self.show(userFriendsViewController, sender: nil)
-                } else {
-                    //            print("authorization failed")
-                    showLoginError()
-                }
+//        ModelFactory.array.append(questionAndAnswers!)
+        
     }
     
     @objc func hideKeyboard() {
