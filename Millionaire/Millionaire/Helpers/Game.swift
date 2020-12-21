@@ -13,6 +13,7 @@ class Game {
     static let shared = Game()
     
     private let recordCaretaker = RecordsCaretaker()
+    private let questionsAndAnswersCaretaker = QuestionsAndAnswersCaretaker()
     
     var orderedOrRandomSetting = OrderedOrRandomSetting.random
         
@@ -26,8 +27,26 @@ class Game {
         }
     }
     
+    var questionsAndAnswers: [QuestionAndAnswers] {
+        didSet {
+            questionsAndAnswersCaretaker.saveRecords(records: questionsAndAnswers)
+        }
+    }
+    
     private init() {
         records  = recordCaretaker.loadRecords()
+        questionsAndAnswers = questionsAndAnswersCaretaker.loadRecords()
+        if questionsAndAnswers.count <= 10 {
+            questionsAndAnswers = ModelFactory.getQuestionsAndAnswers()
+        }
+    }
+    
+    func addQuestion(_ questionAndAnswers: QuestionAndAnswers) {
+        questionsAndAnswers.append(questionAndAnswers)
+    }
+    
+    func clearQuestions() {
+        questionsAndAnswers.removeAll()
     }
     
     

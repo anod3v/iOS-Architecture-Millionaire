@@ -11,7 +11,7 @@ import Foundation
 class GetQuestionsRandomly: GetQuestionsStrategy {
     func getQuestions() -> [QuestionAndAnswers] {
         
-        let array = ModelFactory.getQuestionsAndAnswers()
+        let array = Game.shared.questionsAndAnswers
         return array.shuffled()
         
     }

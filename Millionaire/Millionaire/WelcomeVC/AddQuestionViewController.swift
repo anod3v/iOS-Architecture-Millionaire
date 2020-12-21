@@ -285,7 +285,7 @@ class AddQuestionViewController: UIViewController {
                 Answer(text: "D:" + (answerTextFieldD.text ?? ""), isCorrect: whichIsCorrect.optionD)
         ])
         
-//        ModelFactory.array.append(questionAndAnswers!)
+        Game.shared.addQuestion(questionAndAnswers!)
         
     }
     

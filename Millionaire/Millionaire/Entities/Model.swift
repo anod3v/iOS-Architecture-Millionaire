@@ -13,7 +13,7 @@ struct Record: Codable {
     let score: Int
 }
 
-struct QuestionAndAnswers {
+struct QuestionAndAnswers: Codable {
     let question: String
     let answers: [Answer]
     
@@ -23,7 +23,7 @@ struct QuestionAndAnswers {
     }
 }
 
-struct Answer {
+struct Answer: Codable {
     let text: String
     let isCorrect: Bool
     
