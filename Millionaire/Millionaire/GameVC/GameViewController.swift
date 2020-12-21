@@ -12,7 +12,9 @@ class GameViewController: UIViewController {
     
     var listOfQuestions = [QuestionAndAnswers]()
     
-    var currentQuestionIndex = 0
+    var currentQuestionIndex = Observable<Int>(0)
+    
+//    var currentQuestionIndexObservable = Observable<Int>(0)
     
     var delegate: GameSessionDelegate?
     
@@ -59,6 +61,19 @@ class GameViewController: UIViewController {
         return label
     }()
     
+    var countLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
+        label.textAlignment = .center
+        label.textColor = .white
+        label.backgroundColor = .red
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var getQuestionsStrategy: GetQuestionsStrategy {
         switch Game.shared.orderedOrRandomSetting {
         case .random:
@@ -76,6 +91,14 @@ class GameViewController: UIViewController {
         addTapObservers()
         listOfQuestions = getQuestionsStrategy.getQuestions()
         configureQuestions()
+        addCountObserver()
+    }
+    
+    func addCountObserver() {
+        currentQuestionIndex.addObserver(self, options: [.new, .initial], closure: { [weak self] (counter, _) in
+            guard let self = self else { return }
+            self.countLabel.text = "Вопрос: \(counter) из \(self.listOfQuestions.count)"
+        })
     }
     
     func addTapObservers() {
@@ -118,20 +141,20 @@ class GameViewController: UIViewController {
     func configureQuestions() {
         
 //        debugPrint("currentQuestionIndex:", currentQuestionIndex)
-        guard currentQuestionIndex <= listOfQuestions.count - 1 else { return }
-        guard listOfQuestions[currentQuestionIndex].answers.count >= 4 else { return }
+        guard currentQuestionIndex.value <= listOfQuestions.count - 1 else { return }
+        guard listOfQuestions[currentQuestionIndex.value].answers.count >= 4 else { return }
         
-        self.questionLabel.text = listOfQuestions[currentQuestionIndex].question
-        self.buttonA.label.text = listOfQuestions[currentQuestionIndex].answers[0].text
-        self.buttonA.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[0].isCorrect
-        self.buttonB.label.text = listOfQuestions[currentQuestionIndex].answers[1].text
-        self.buttonB.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[1].isCorrect
-        self.buttonC.label.text = listOfQuestions[currentQuestionIndex].answers[2].text
-        self.buttonC.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[2].isCorrect
-        self.buttonD.label.text = listOfQuestions[currentQuestionIndex].answers[3].text
-        self.buttonD.answerIsCorrect = listOfQuestions[currentQuestionIndex].answers[3].isCorrect
-        delegate?.addRecord(index: currentQuestionIndex, count: listOfQuestions.count)
-        currentQuestionIndex += 1
+        self.questionLabel.text = listOfQuestions[currentQuestionIndex.value].question
+        self.buttonA.label.text = listOfQuestions[currentQuestionIndex.value].answers[0].text
+        self.buttonA.answerIsCorrect = listOfQuestions[currentQuestionIndex.value].answers[0].isCorrect
+        self.buttonB.label.text = listOfQuestions[currentQuestionIndex.value].answers[1].text
+        self.buttonB.answerIsCorrect = listOfQuestions[currentQuestionIndex.value].answers[1].isCorrect
+        self.buttonC.label.text = listOfQuestions[currentQuestionIndex.value].answers[2].text
+        self.buttonC.answerIsCorrect = listOfQuestions[currentQuestionIndex.value].answers[2].isCorrect
+        self.buttonD.label.text = listOfQuestions[currentQuestionIndex.value].answers[3].text
+        self.buttonD.answerIsCorrect = listOfQuestions[currentQuestionIndex.value].answers[3].isCorrect
+        delegate?.addRecord(index: currentQuestionIndex.value, count: listOfQuestions.count)
+        currentQuestionIndex.value += 1
     }
     
     func addSubviews() {
@@ -140,6 +163,7 @@ class GameViewController: UIViewController {
         self.view.addSubview(buttonB)
         self.view.addSubview(buttonC)
         self.view.addSubview(buttonD)
+        self.view.addSubview(countLabel)
     }
     
     func setupConstraints() {
@@ -168,6 +192,11 @@ class GameViewController: UIViewController {
             buttonD.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             buttonD.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             buttonD.heightAnchor.constraint(equalToConstant: 20),
+            
+            countLabel.topAnchor.constraint(equalTo: buttonD.bottomAnchor, constant: 26),
+            countLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            countLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            countLabel.heightAnchor.constraint(equalToConstant: 20),
             
         ])
     }
