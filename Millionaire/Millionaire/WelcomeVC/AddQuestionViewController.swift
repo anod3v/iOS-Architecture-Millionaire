@@ -47,10 +47,10 @@ class AddQuestionViewController: UIViewController {
         return label
     }()
     
-    let loginInputField: StyledTextField = {
+    let questionTextField: StyledTextField = {
         let field = StyledTextField()
         field.backgroundColor = .white
-        field.placeholder = "Введите вопрос"
+        field.placeholder = "Введите здесь вопрос"
         
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
@@ -69,10 +69,37 @@ class AddQuestionViewController: UIViewController {
         return label
     }()
     
-    let passwordInputField: StyledTextField = {
+    let answerTextFieldA: StyledTextField = {
         let field = StyledTextField()
         field.backgroundColor = .white
         field.placeholder = "Вариант А"
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+    
+    let answerTextFieldB: StyledTextField = {
+        let field = StyledTextField()
+        field.backgroundColor = .white
+        field.placeholder = "Вариант B"
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+    
+    let answerTextFieldC: StyledTextField = {
+        let field = StyledTextField()
+        field.backgroundColor = .white
+        field.placeholder = "Вариант C"
+        
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+    
+    let answerTextFieldD: StyledTextField = {
+        let field = StyledTextField()
+        field.backgroundColor = .white
+        field.placeholder = "Вариант D"
         
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
@@ -104,9 +131,12 @@ class AddQuestionViewController: UIViewController {
         
         // add two labels to contentView
         contentView.addSubview(questionLabel)
-        contentView.addSubview(loginInputField)
+        contentView.addSubview(questionTextField)
         contentView.addSubview(answersLabel)
-        contentView.addSubview(passwordInputField)
+        contentView.addSubview(answerTextFieldA)
+        contentView.addSubview(answerTextFieldB)
+        contentView.addSubview(answerTextFieldC)
+        contentView.addSubview(answerTextFieldD)
         contentView.addSubview(addButton)
         
         // Жест нажатия
@@ -128,30 +158,53 @@ class AddQuestionViewController: UIViewController {
             
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
             
-            questionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 200),
+            questionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
             questionLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             questionLabel.heightAnchor.constraint(equalToConstant: 40),
-            questionLabel.widthAnchor.constraint(equalToConstant: 200),
+            questionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            questionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            loginInputField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 40),
-            loginInputField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            loginInputField.heightAnchor.constraint(equalToConstant: 40),
-            loginInputField.widthAnchor.constraint(equalToConstant: 200),
+            questionTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 40),
+            questionTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            questionTextField.heightAnchor.constraint(equalToConstant: 40),
+            questionTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            questionTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            answersLabel.topAnchor.constraint(equalTo: loginInputField.bottomAnchor, constant: 40),
+            answersLabel.topAnchor.constraint(equalTo: questionTextField.bottomAnchor, constant: 40),
             answersLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             answersLabel.heightAnchor.constraint(equalToConstant: 40),
-            answersLabel.widthAnchor.constraint(equalToConstant: 200),
+            answersLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            answersLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            passwordInputField.topAnchor.constraint(equalTo: answersLabel.bottomAnchor, constant: 40),
-            passwordInputField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            passwordInputField.heightAnchor.constraint(equalToConstant: 40),
-            passwordInputField.widthAnchor.constraint(equalToConstant: 200),
+            answerTextFieldA.topAnchor.constraint(equalTo: answersLabel.bottomAnchor, constant: 40),
+            answerTextFieldA.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            answerTextFieldA.heightAnchor.constraint(equalToConstant: 40),
+            answerTextFieldA.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            answerTextFieldA.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            answerTextFieldB.topAnchor.constraint(equalTo: answerTextFieldA.bottomAnchor, constant: 40),
+            answerTextFieldB.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            answerTextFieldB.heightAnchor.constraint(equalToConstant: 40),
+            answerTextFieldB.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            answerTextFieldB.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            answerTextFieldC.topAnchor.constraint(equalTo: answerTextFieldB.bottomAnchor, constant: 40),
+            answerTextFieldC.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            answerTextFieldC.heightAnchor.constraint(equalToConstant: 40),
+            answerTextFieldC.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            answerTextFieldC.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            answerTextFieldD.topAnchor.constraint(equalTo: answerTextFieldC.bottomAnchor, constant: 40),
+            answerTextFieldD.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            answerTextFieldD.heightAnchor.constraint(equalToConstant: 40),
+            answerTextFieldD.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            answerTextFieldD.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
-            addButton.topAnchor.constraint(equalTo: passwordInputField.bottomAnchor, constant: 40),
+            addButton.topAnchor.constraint(equalTo: answerTextFieldD.bottomAnchor, constant: 40),
             addButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             addButton.heightAnchor.constraint(equalToConstant: 40),
-            addButton.widthAnchor.constraint(equalToConstant: 200),
+            addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            addButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             addButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40)
             
@@ -161,9 +214,9 @@ class AddQuestionViewController: UIViewController {
     
     @objc func loginButtonPressed(_ sender: Any) {
                 // Получаем текст логина
-                let login = loginInputField.text!
+                let login = questionTextField.text!
         //         Получаем текст-пароль
-                let password = passwordInputField.text!
+                let password = answerTextFieldA.text!
         
 //                let mainTabBarViewController = MainTabBarViewController()
         
