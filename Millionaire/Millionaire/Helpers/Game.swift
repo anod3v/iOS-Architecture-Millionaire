@@ -33,6 +33,7 @@ class Game {
         }
     }
     
+    
     private init() {
         records  = recordCaretaker.loadRecords()
         questionsAndAnswers = questionsAndAnswersCaretaker.loadRecords()
